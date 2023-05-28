@@ -1,0 +1,33 @@
+
+
+*******************************************************************
+*          __                                                     *
+*      _  |@@|             ░█▀▄░▀█▀░░░░░▀█▀░█▀▄░█▀▀░█▀▄░█▀█░▀█▀   *
+*     / \ \--/ __          ░█▀▄░░█░░░░░░░█░░█▀▄░█░░░█▀▄░█░█░░█░   *
+*     ) O|----|  |   __    ░▀▀░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀░░▀▀▀░░▀░   *
+*    / / \ }{ /\ )_ / _\                                          *
+*    )/  /\__/\ \__O (__     42-Abu Dhabi exam Break Time Bot     *
+*   |/  (--/\--)    \__/                                          *
+*   /   _)(  )(_                                                  *
+*      `---''---`                                                 *
+*******************************************************************
+___________________________________________________________________
+| ADD     <login> //! Adds a new student/pisciner to bot session  |
+|                                                                 |
+| REMOVE  <login> //! Removes a student/pisciner from bot session |
+|                                                                 |
+| REVIEW  <login> //! Returns currect status, and quantity of     |
+|                      breaks already used                        |
+|                                                                 |
+| BTH     <login> //! Sets status of student/pisciner             |
+|    if break is available, else sends "break unavailable"        |
+|                                                                 |
+| PRAR    <login> //! Sets status of student/pisciner             |
+|    if break is available, else sends "break unavailable"        |
+|                                                                 |
+| FINISH  <login> //! Sets status of student/pisciner to finished |
+|                      exam                                       |
+|                                                                 |
+| LIST            //! Lists all students/pisciners and status     |
+-------------------------------------------------------------------
+
