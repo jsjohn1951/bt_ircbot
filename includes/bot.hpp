@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:45:00 by wismith           #+#    #+#             */
-/*   Updated: 2023/05/28 18:36:26 by wismith          ###   ########.fr       */
+/*   Updated: 2023/05/29 20:28:54 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # include <string>
 # include <fstream>
 
-# include "../ftServerUtils/includes/error.hpp"
-#include "../includes/parser.hpp"
+# include "../ftServerUtils/includes/ServerUtility.hpp"
+#include "parser.hpp"
 
 # define SEATED 0
 # define BTH_BREAK 1
@@ -53,6 +53,7 @@ namespace ft
 	class bot
 	{
 		private :
+			ft::log	log;
 			int								fd;
 			struct pollfd					pfd;
 			std::string						buffer;

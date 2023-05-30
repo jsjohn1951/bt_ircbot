@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:54:16 by wismith           #+#    #+#             */
-/*   Updated: 2023/05/28 19:17:21 by wismith          ###   ########.fr       */
+/*   Updated: 2023/05/29 21:03:01 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,21 @@ s_subj::~s_subj () {}
 
 bool		g_bot_run = true;
 
-bot::bot () : fd(0), pfd(), buffer(), pars(), msgs(), backlog(),
-	chan(), sendingCmd(false), sendChan(), subj() {}
+bot::bot () : log("bot.log"), fd(0), pfd(), buffer(), pars(), msgs(), backlog(),
+	chan(), sendingCmd(false), sendChan(), subj()
+{
+	this->log << " *******************************************************************";
+	this->log << " *          __                                                     *";
+	this->log << " *      _  |@@|             ░█▀▄░▀█▀░░░░░▀█▀░█▀▄░█▀▀░█▀▄░█▀█░▀█▀   *";
+	this->log << " *     / \\ \\--/ __          ░█▀▄░░█░░░░░░░█░░█▀▄░█░░░█▀▄░█░█░░█░   *";
+	this->log << " *     ) O|----|  |   __    ░▀▀░░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀░░▀▀▀░░▀░   *";
+	this->log << " *    / / \\ }{ /\\ )_ / _\\                                          *";
+	this->log << " *    )/  /\\__/\\ \\__O (__     42-Abu Dhabi exam Break Time Bot     *";
+	this->log << " *   |/  (--/\\--)    \\__/                                          *";
+	this->log << " *   /   _)(  )(_                        Constructing...           *";
+	this->log << "*      `---''---`                                                 *";
+	this->log << "*******************************************************************";
+}
 
 bot::~bot() {
 	std::map<std::string, t_subj *>::iterator	it;
@@ -55,10 +68,10 @@ void	bot::Connect(std::string pass)
 	std::string	cmd;
 
 	cmd += "CAP LS\r\n";
-	cmd += "CAP END\r\n";
 	cmd += "PASS " + pass + "\r\n";
 	cmd += "NICK bot\r\n";
 	cmd += "USER bot bot localhost :ircbot\r\n";
+	cmd += "CAP END\r\n";
 	cmd += "JOIN #btBot\r\n";
 	this->chan.push_back("#btBot");
 
@@ -92,7 +105,7 @@ void	bot::run ()
 			this->sendingCmd = false;
 		}
 
-		usleep (120000);
+		usleep (12000);
 
 		if (this->pfd.revents & POLLIN)
 		{
@@ -150,7 +163,6 @@ void		bot::selCmd(std::vector<std::string> cmd)
 				this->finish(cmd[5]);
 
 			this->backlog.push_back("");
-			std::cout << "[ " << this->toLower(cmd[4]) << " ]" << std::endl;
 		}
 	}
 	else if (cmd[1] == "QUIT")
@@ -242,6 +254,7 @@ void	bot::add(std::string &subUser)
 		return this->backlog.push_back(subUser + " IS ALREADY A MEMBER!");
 	this->backlog.push_back("ADDING USER : " + subUser);
 	this->subj[subUser] = new t_subj(2, 2);
+	this->log << subUser + " added to bot!";
 }
 
 void	bot::remove(std::string &subUser)
@@ -251,6 +264,7 @@ void	bot::remove(std::string &subUser)
 	this->backlog.push_back("REMOVING USER : " + subUser);
 	delete this->subj[subUser];
 	this->subj.erase(this->subj.find(subUser));
+	this->log << subUser + " removed from bot!";
 }
 
 void	bot::status(std::string &subUser)
@@ -294,10 +308,14 @@ void	bot::bth(std::string &subUser)
 	if (sub->status == FINISHED)
 		return this->backlog.push_back(subUser + " ALREADY FINISHED!");
 	if (!sub->bth)
+	{
+		this->log << subUser + " : HAS NO MORE BATHROOM BREAKS LEFT!";
 		return this->backlog.push_back(subUser + " HAS NO MORE BATHROOM BREAKS LEFT!");
+	}
 	this->backlog.push_back(subUser + " status set : [ WENT BATHROOM ]");
 	sub->bth--;
 	sub->status = BTH_BREAK;
+	this->log << subUser + " : bathroom break";
 }
 
 void	bot::prar(std::string &subUser)
@@ -309,10 +327,14 @@ void	bot::prar(std::string &subUser)
 	if (sub->status == FINISHED)
 		return this->backlog.push_back(subUser + " ALREADY FINISHED!");
 	if (!sub->prar)
+	{
+		this->log << subUser + " : HAS NO MORE PRAYER BREAKS LEFT!";
 		return this->backlog.push_back(subUser + " HAS NO MORE PRAYER BREAKS LEFT!");
+	}
 	this->backlog.push_back(subUser + " status set : [ WENT PRAYER BREAK ]");
 	sub->prar--;
 	sub->status = PRAR_BREAK;
+	this->log << subUser + " : prayer break";
 }
 
 void	bot::finish(std::string &subUser)
@@ -325,6 +347,7 @@ void	bot::finish(std::string &subUser)
 		return this->backlog.push_back(subUser + " ALREADY FINISHED!");
 	this->backlog.push_back(subUser + " status set : [ FINISHED ]");
 	sub->status = FINISHED;
+	this->log << subUser + " : finished exam";
 }
 
 void	bot::list()

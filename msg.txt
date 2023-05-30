@@ -16,7 +16,7 @@ ___________________________________________________________________
 |                                                                 |
 | REMOVE  <login> //! Removes a student/pisciner from bot session |
 |                                                                 |
-| REVIEW  <login> //! Returns currect status, and quantity of     |
+| STATUS  <login> //! Returns currect status, and quantity of     |
 |                      breaks already used                        |
 |                                                                 |
 | BTH     <login> //! Sets status of student/pisciner             |

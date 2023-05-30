@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 09:28:30 by wismith           #+#    #+#              #
-#    Updated: 2023/05/28 18:50:44 by wismith          ###   ########.fr        #
+#    Updated: 2023/05/30 13:56:49 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ clean :
 fclean : clean
 	@make fclean -C $(UTILSDIR)
 	rm -rf $(NAME)
+	rm -rf bot.log
 
 re : fclean all
 
