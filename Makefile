@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 09:28:30 by wismith           #+#    #+#              #
-#    Updated: 2023/05/30 13:56:49 by wismith          ###   ########.fr        #
+#    Updated: 2023/05/31 21:25:06 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,9 @@ UTILS = $(UTILSDIR)/ServerUtils.a
 SRCS = main \
 	bot \
 	parser \
+	bot_commands \
+	parse_config \
+	channel \
 
 OBJDIR = objects
 
@@ -25,7 +28,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(SRCS)))
 
 CXX = c++
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 $(OBJDIR)/%.o : srcs/%.cpp
 	@mkdir -p $(OBJDIR)

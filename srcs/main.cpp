@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:46:59 by wismith           #+#    #+#             */
-/*   Updated: 2023/05/28 17:52:14 by wismith          ###   ########.fr       */
+/*   Updated: 2023/05/31 18:42:43 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@
 **			Once the bot has joined a channel you can perform following commands:
 **				ADD		<login>		//! Adds a new student/pisciner to bot session
 **				REMOVE	<login>		//! Removes a student/pisciner from bot session
-**				REVIEW	<login>		//! See last status, and quantity of breaks already used
+**				STATUS	<login>		//! See last status, and quantity of breaks already used
 **				BTH		<login>		//! Sets last status of student/pisciner if break is available, else sends "break unavailable"
 **				PRAR	<login>		//! Sets last status of student/pisciner if break is available, else sends "break unavailable"
+**				BACK 	<login>		//! Sets status of student/pisciner to seated
 **				FINISH	<login>		//! Sets status of student/pisciner to finished exam
 **				LIST				//! Lists all students/pisciners and status
 **				HELP				//! Displays available commands
@@ -55,7 +56,9 @@ int	main(int argc, char **argv)
 	if (argc != 4)
 	{
 		std::cerr << "Incorrect num arguments" << std::endl;
-		return (-1);
+		std::cout << "Format : " << std::endl;
+		std::cout << "\t./bt_ircbot <IPv4> <port> <password>" << std::endl;
+ 		return (-1);
 	}
 
 	ft::bot	bot;
@@ -72,5 +75,6 @@ int	main(int argc, char **argv)
 	bot.init(port, argv[1]);
 	bot.Connect(argv[3]);
 	bot.retrieveMsgs();
+	bot.retrieveConfig();
 	bot.run();
 }

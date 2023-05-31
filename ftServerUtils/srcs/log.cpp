@@ -53,6 +53,11 @@ void			ft::log::parsLog(const std::string &msg)
 */
 void	ft::log::pushLog(const std::string &msg)
 {
+	time_t		now = time( 0 );
+	tm			*gmtm = gmtime( &now );
+	std::string time( asctime( gmtm ) );
+	time.erase(time.find('\n'));
+
 	std::string	lnStr;
 	std::ofstream	outfile(this->Name.c_str());
 	this->lastLog = msg;
@@ -63,6 +68,7 @@ void	ft::log::pushLog(const std::string &msg)
 		this->lineNum++;
 		this->Content += (lnStr << this->lineNum) + " : ";
 		this->Content += this->nextLog.front();
+		this->Content += " time < " + time + " > ";
 		this->Content += "\n";
 		this->nextLog.pop_front();
 	}

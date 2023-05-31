@@ -1,0 +1,19 @@
+# BOT BREAKS contains the break settings (e.g: PRAR 4)
+
+BOT BREAKS
+
+PRAR 5
+BTH 2
+
+BOT BREAKS END
+
+# BOT NAMES contains the username of every student
+#  within the session
+
+BOT NAMES
+
+username
+username1
+username2
+
+BOT NAMES END
