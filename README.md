@@ -23,18 +23,26 @@ Once cloned enter the following commands in terminal to build the executable:
 $> cd bt_ircbot
 $> make
 ```
+## Config
+The bot's configuration can be set inside the bot's 'config.bot' file.
+The key words : "BOT BREAKS" is to denote the start of the break time limits settings.
+The key words : "BOT NAMES" is to denote the start of the username list to be taken into
+the system.
+Each denoted section will end with "BOT <section> END," see an example inside the config!
+Lines starting with '#' are ignored by the parser, and can be used to include comments inside 'config.bot.'
 
 ## Usage
-step 1. Run your irc server
-step 2. inside bt_ircbot directory run
+step 1. Set your bot configuration inside config.bot ( Read about the config above! )
+step 2. Run your irc server
+step 3. inside bt_ircbot directory run
 ``` ./bt_ircbot <IPv4> <port> <irc server password>```
 example :
 ``` ./bt_ircbot 127.0.0.1 6667 pw ```
 The bot will run infinitely, or will print an error if a systemcall failed or was unable to connect to server.
 After starting the bot, it should join the server automatically as an automated client.
-step 3. Run your irc client ( irssi recommended ), and connect to the server using the following commands:
+step 4. Run your irc client ( irssi recommended ), and connect to the server using the following commands:
 ``` /connect <IPv4> <port> <irc server password> ```
-step 4. Now that both client and bot has joined to the server, enter the following commands to the client in order to create a new channel and invite the bot:
+step 5. Now that both client and bot has joined to the server, enter the following commands to the client in order to create a new channel and invite the bot:
 ``` /join #chan```
 ``` /invite bot```
 The bot will then automatically join the channel.

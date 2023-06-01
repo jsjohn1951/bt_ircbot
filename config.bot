@@ -1,19 +1,33 @@
 # BOT BREAKS contains the break settings (e.g: PRAR 4)
+# 'config.bot' is indentation sensitive. Tabs should not be used.
+# Use spaces instead, unless writing inside a comment denoted by '#'
 
+# Sections :
+#	1. BOT BREAKS
+#	2. BOT NAMES
+
+# Bot break time limits section start
 BOT BREAKS
 
+# PRAR for prayer breaks
 PRAR 5
+
+# BTH for bathroom breaks
 BTH 2
 
+# Bot break time limits section end
 BOT BREAKS END
 
 # BOT NAMES contains the username of every student
 #  within the session
 
+# Username section start
 BOT NAMES
 
+# List of usernames
 username
 username1
 username2
 
+# Username section end
 BOT NAMES END

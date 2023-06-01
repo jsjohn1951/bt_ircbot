@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/27 09:28:30 by wismith           #+#    #+#              #
-#    Updated: 2023/05/31 21:25:06 by wismith          ###   ########.fr        #
+#    Updated: 2023/06/01 11:10:12 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,11 +41,41 @@ $(OBJDIR)/%.o : srcs/%.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 all : $(NAME)
-	@tput setaf 2
-	@printf "\t'bt_ircbot' Executable Generated\n"
+	@clear
+
+	@tput setaf 1
+	@printf "___.    __     .__              ___.           __    \n"
+	@printf "\_ |___/  |_   |__|______   ____\_ |__   _____/  |_  \n"
+	@printf " | __ \   __\  |  \_  __ \_/ ___\| __ \ /  _ \   __\ \n"
+	@printf " | \_\ \  |    |  ||  | \/\  \___| \_\ (  <_> )  |   \n"
+	@printf " |___  /__|____|__||__|    \___  >___  /\____/|__|   \n"
+	@printf "     \/  /_____/               \/    \/              \n"
 	@tput init
+
+	@tput setaf 2
+	@printf "\tExecutable Provided\n\n"
+	@tput init
+
 	@printf "\tExecute with:\n\n\t\t"
-	@printf "./bt_ircbot <IPv4> <port> <password>\n"
+	@printf "./bt_ircbot <"
+
+	@tput setaf 1
+	@printf "IPv4"
+	@tput init
+	
+	@printf "> <"
+
+	@tput setaf 1
+	@printf "port"
+	@tput init
+	
+	@printf "> <"
+
+	@tput setaf 1
+	@printf "password"
+	@tput init
+
+	@printf ">\n"
 
 $(NAME) : utility $(OBJ)
 	@printf "\t"
